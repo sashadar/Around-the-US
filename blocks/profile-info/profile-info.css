@@ -1,0 +1,10 @@
+.profile-info {
+  margin-left: 30px;
+  max-width: 415px;
+  display: grid;
+  column-gap: 18px;
+  row-gap: 16px;
+  grid-template-areas:
+    "profile-info__name profile-info__button-edit"
+    "profile-info__occupation profile-info__occupation";
+}
