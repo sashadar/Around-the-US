@@ -4,6 +4,7 @@
   display: grid;
   column-gap: 18px;
   row-gap: 16px;
+  align-items: baseline;
   grid-template-areas:
     "profile-info__name profile-info__button-edit"
     "profile-info__occupation profile-info__occupation";

@@ -7,5 +7,5 @@
   background-repeat: no-repeat;
   background-position: center;
   grid-area: profile-info__button-edit;
-  align-self: center;
+  /* align-self: end; */
 }
