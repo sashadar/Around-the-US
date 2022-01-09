@@ -9,3 +9,10 @@
     "profile-info__name profile-info__button-edit"
     "profile-info__occupation profile-info__occupation";
 }
+
+@media screen and (max-width: 614px) {
+  .profile-info {
+    row-gap: 14px;
+    column-gap: 10px;
+  }
+}

@@ -4,4 +4,12 @@
   line-height: 48px;
   margin: 0;
   grid-area: profile-info__name;
+  /* text-align: center; */
+}
+
+@media screen and (max-width: 614px) {
+  .profile-info__name {
+    font-size: 22px;
+    line-height: 27px;
+  }
 }

@@ -4,3 +4,11 @@
   grid-area: profile-info__occupation;
   margin: 0;
 }
+
+@media screen and (max-width: 614px) {
+  .profile-info__occupation {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+}

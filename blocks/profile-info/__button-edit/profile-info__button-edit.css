@@ -9,3 +9,10 @@
   grid-area: profile-info__button-edit;
   /* align-self: end; */
 }
+
+@media screen and (max-width: 614px) {
+  .profile-info__button-edit {
+    width: 18px;
+    height: 18px;
+  }
+}
