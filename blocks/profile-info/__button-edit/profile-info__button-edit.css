@@ -10,6 +10,11 @@
   /* align-self: end; */
 }
 
+.profile-info__button-edit:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 614px) {
   .profile-info__button-edit {
     width: 18px;

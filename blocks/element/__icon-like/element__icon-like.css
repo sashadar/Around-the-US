@@ -2,3 +2,12 @@
   width: 21px;
   height: 19px;
 }
+
+.element__icon-like:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.element__icon-like:active {
+  background-color: #000000;
+}
