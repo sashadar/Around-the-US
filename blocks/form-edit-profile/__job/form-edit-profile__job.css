@@ -1,4 +1,4 @@
-.form-edit-profile__occupation {
+.form-edit-profile__job {
   width: 100%;
   margin: 29.74px auto 0;
   border: none;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 614px) {
-  .form-edit-profile__occupation {
+  .form-edit-profile__job {
     padding: 0 0 9px 0;
     margin: 30px auto 0;
   }
