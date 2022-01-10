@@ -1,19 +1,13 @@
 .form-edit-profile__name {
-  /*   width: 358px; */
   width: 100%;
   margin: 54px auto 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0 0 13.26px 0;
-  /*   font-family: "Inter", "Arial", sans-serif;
-  color: black; */
-  /*   display: flex;
-  flex-direction: column; */
 }
 
 @media screen and (max-width: 614px) {
   .form-edit-profile__name {
-    /*     width: 238px; */
     padding: 0 0 9px 0;
     margin: 76px auto 0;
   }
