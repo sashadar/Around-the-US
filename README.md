@@ -35,4 +35,4 @@ The project is far away from being finished and few improvements are planned in 
 [bemmeth]: https://en.bem.info/
 [seo]: https://developers.google.com/search/docs/beginner/seo-starter-guide
 [figma]: https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1
-[gitpages]: https://sashadar.github.io/web_project_3/
+[gitpages]: https://sashadar.github.io/web_project_4/
