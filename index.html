@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Web Project 4. An interactive page where users can add, remove, or like photos"
+    />
+    <meta name="keywords" content="html, css, javascript" />
+    <meta name="author" content="Alex Darincev" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Around The U.S.</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="images/logo/header-logo.svg"
+          alt="Around the U.S. logo"
+        />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="avatar">
+            <img
+              class="avatar__image"
+              src="images/jacq-cousteau-avatar-pic.png"
+              alt="Jacques Cousteau photo"
+            />
+          </div>
+          <div class="profile-info">
+            <h1 class="profile-info__name">Jacques Cousteau</h1>
+            <button class="profile-info__button-edit"></button>
+            <p class="profile-info__job">Explorer</p>
+          </div>
+          <button class="profile__button-add"></button>
+        </section>
+        <section class="popup">
+          <div class="popup__container">
+            <button type="button" class="popup__button-close"></button>
+            <h2 class="form-edit-profile__heading">Edit profile</h2>
+            <form class="form-edit-profile">
+              <input
+                type="text"
+                class="form-edit-profile__name"
+                placeholder="Jacques Cousteau"
+              />
+              <input
+                type="text"
+                class="form-edit-profile__job"
+                placeholder="Explorer"
+              />
+              <button type="submit" class="form-edit-profile__button-submit">
+                Save
+              </button>
+            </form>
+          </div>
+        </section>
+        <section class="elements">
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/yosemite-valley.png"
+              alt="Yosemite Valley photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Yosemite Valley</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/lake-louise.png"
+              alt="Lake Louise photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Lake Louise</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/bald-mountains.png"
+              alt="Bald Mountains photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Bald Mountains</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/latemar.png"
+              alt="Latemar photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Latemar</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/vanoise-national-park.png"
+              alt="Vanoise National Park photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Vanoise National Park</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+          <article class="element">
+            <img
+              class="element__image"
+              src="images/lago-di-braies.png"
+              alt="Lago di Braies photo"
+            />
+            <div class="element__wrap">
+              <h2 class="element__title">Lago di Braies</h2>
+              <img
+                class="element__icon-like"
+                src="images/icons/heart-icon.svg"
+                alt="Heart icon"
+              />
+            </div>
+          </article>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="copyright">&copy; 2022 Around The U.S.</p>
+      </footer>
+    </div>
+  </body>
+  <script src="./scripts/index.js"></script>
+</html>
