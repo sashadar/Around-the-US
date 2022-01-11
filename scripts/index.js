@@ -22,8 +22,6 @@ function handleProfileFormSubmit(evt) {
 }
 
 function handleProfileFormOpen(evt) {
-  evt.preventDefault();
-
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 
