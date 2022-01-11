@@ -18,7 +18,8 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  popup.classList.remove("popup_opened");
+  /* popup.classList.remove("popup_opened"); */
+  handleProfileFormClose(evt);
 }
 
 function handleProfileFormOpen(evt) {
@@ -31,8 +32,6 @@ function handleProfileFormOpen(evt) {
 }
 
 function handleProfileFormClose(evt) {
-  evt.preventDefault();
-
   popup.classList.remove("popup_opened");
 }
 
