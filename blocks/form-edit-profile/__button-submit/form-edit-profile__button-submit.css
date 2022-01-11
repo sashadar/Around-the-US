@@ -6,7 +6,7 @@
   /*reason: text block heights in input fields in figma are different and currently can't be implemented
   in code*/
   /*clarification: letters 'g' 'j' 'p' 'q' 'y' tails are not part of the text blocks in figma */
-  margin: 48px auto auto;
+  margin: 48px auto 36.51px;
   background-color: #000000;
   color: #ffffff;
   font-size: 18px;
@@ -22,6 +22,6 @@
 @media screen and (max-width: 614px) {
   .form-edit-profile__button-submit {
     height: 46px;
-    margin-top: 46px;
+    margin: 46px auto 25px;
   }
 }
