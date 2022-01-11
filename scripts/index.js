@@ -1,10 +1,16 @@
 let formElement = document.querySelector(".form-edit-profile");
-let nameInput = formElement.querySelector(".form-edit-profile__name");
-let jobInput = formElement.querySelector(".form-edit-profile__job");
+let nameInput = formElement.querySelector(
+  ".form-edit-profile__input_type_name"
+);
+let jobInput = formElement.querySelector(".form-edit-profile__input_type_job");
+/* let nameInput = formElement.getElementsByName("name");
+let jobInput = formElement.getElementsByName("job"); */
 
 let profile = document.querySelector(".profile");
 let profileName = profile.querySelector(".profile-info__name");
 let profileJob = profile.querySelector(".profile-info__job");
+/* let profileName = profile.getElementsByName("name")[0];
+let profileJob = profile.getElementsByName("job")[0]; */
 let profileEditBtn = profile.querySelector(".profile-info__button-edit");
 
 let popup = document.querySelector(".popup");
