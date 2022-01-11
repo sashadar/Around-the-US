@@ -18,7 +18,6 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  /* popup.classList.remove("popup_opened"); */
   handleProfileFormClose(evt);
 }
 

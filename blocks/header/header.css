@@ -12,8 +12,4 @@
   }
 }
 
-@media screen and (max-width: 614px) {
-  .header {
-    max-width: 282px;
-  }
-}
+
