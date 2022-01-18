@@ -61,7 +61,12 @@ function createCard(item) {
 
   const cardImage = cardElement.querySelector(".element__image");
   const cardTitle = cardElement.querySelector(".element__title");
-  const cardButtonLike = cardElement.querySelector(".element__button-like");
+  const cardButtonLike = cardElement.querySelector(
+    ".element__button_action_like"
+  );
+  const cardButtonDelete = cardElement.querySelector(
+    ".element__button_action_delete"
+  );
 
   cardImage.src = item.link;
   cardImage.alt = item.name;
@@ -69,7 +74,12 @@ function createCard(item) {
   cardTitle.textContent = item.name;
 
   cardButtonLike.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("element__button-like_active");
+    evt.target.classList.toggle("element__button_action_like_active");
+  });
+
+  cardButtonDelete.addEventListener("click", function (evt) {
+    const cardElement = cardButtonDelete.closest(".element");
+    cardElement.remove();
   });
 
   return cardElement;
