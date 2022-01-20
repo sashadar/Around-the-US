@@ -95,8 +95,10 @@ function createCard(item) {
   cardTitle.textContent = item.name;
 
   cardImage.addEventListener("error", () => {
-    cardImage.src = "../images/no-picture.png";
+    cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-4.png";
   });
+
+  cardImage.addEventListener("click", handlePictureOpen);
 
   cardButtonLike.addEventListener("click", function (evt) {
     evt.target.classList.toggle("element__button_action_like_active");
@@ -112,7 +114,11 @@ function createCard(item) {
 
 function generateCard(cardData) {
   const placeCard = createCard(cardData);
-  cardContainer.append(placeCard);
+  cardContainer.prepend(placeCard);
+}
+
+function handlePictureOpen(evt) {
+  const popupImg = createPopupImg();
 }
 
 function createForm(formProperties, handleButtonSubmitFunc) {
