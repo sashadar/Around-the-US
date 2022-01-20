@@ -117,6 +117,8 @@ function generateCard(cardData) {
   cardContainer.prepend(placeCard);
 }
 
+function createPopupImg() {}
+
 function handlePictureOpen(evt) {
   /* const popupImg = createPopupImg(); */
 }
