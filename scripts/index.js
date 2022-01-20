@@ -1,11 +1,10 @@
-let formElement = document.querySelector(".form-edit-profile");
+const profile = document.querySelector(".profile");
+const profileName = profile.querySelector(".profile-info__name");
+const profileJob = profile.querySelector(".profile-info__job");
+const profileEditBtn = profile.querySelector(".profile-info__button-edit");
+const profileAddBtn = profile.querySelector(".profile__button-add");
 
-let profile = document.querySelector(".profile");
-let profileName = profile.querySelector(".profile-info__name");
-let profileJob = profile.querySelector(".profile-info__job");
-let profileEditBtn = profile.querySelector(".profile-info__button-edit");
-
-let popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup");
 
 const cardContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#template-element").content;
@@ -15,7 +14,11 @@ const formsProperties = [
     formHeadingVal: "Edit profile",
     formNameAttr: "form-edit-profile",
     inputFirstNameAttr: "name",
+    inputFirstVal: "",
+    inputFirstPlacehld: "",
     inputScndNameAttr: "job",
+    inputScndVal: "",
+    inputScndPlacehld: "",
     buttonSubmitVal: "Save",
     buttonSubmitAriaLbl: "save",
   },
@@ -23,7 +26,11 @@ const formsProperties = [
     formHeadingVal: "New place",
     formNameAttr: "form-new-place",
     inputFirstNameAttr: "title",
+    inputFirstVal: "",
+    inputFirstPlacehld: "Title",
     inputScndNameAttr: "image link",
+    inputScndVal: "",
+    inputScndPlacehld: "Image link",
     buttonSubmitVal: "Create",
     buttonSubmitAriaLbl: "create",
   },
@@ -87,6 +94,10 @@ function createCard(item) {
 
   cardTitle.textContent = item.name;
 
+  cardImage.addEventListener("error", () => {
+    cardImage.src = "../images/no-picture.png";
+  });
+
   cardButtonLike.addEventListener("click", function (evt) {
     evt.target.classList.toggle("element__button_action_like_active");
   });
@@ -125,41 +136,79 @@ function createForm(formProperties, handleButtonSubmitFunc) {
   formElement.name = formProperties.formNameAttr;
 
   inputFirst.name = formProperties.inputFirstNameAttr;
-  inputFirst.value = profileName.textContent;
+  inputFirst.value = formProperties.inputFirstVal;
+  inputFirst.placeholder = formProperties.inputFirstPlacehld;
 
   inputScnd.name = formProperties.inputScndNameAttr;
-  inputScnd.value = profileJob.textContent;
+  inputScnd.value = formProperties.inputScndVal;
+  inputScnd.placeholder = formProperties.inputScndPlacehld;
 
   buttonPopupClose.addEventListener("click", handleFormClose);
 
   buttonSubmit.textContent = formProperties.buttonSubmitVal;
   buttonSubmit.ariaLabel = formProperties.buttonSubmitAriaLbl;
-  buttonSubmit.addEventListener("click", handleButtonSubmitFunc);
+
+  formElement.addEventListener("submit", handleButtonSubmitFunc);
 
   return containerElement;
 }
 
+/************** Edit profile form *******************/
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   profileName.textContent = inputFirst.value;
   profileJob.textContent = inputScnd.value;
+
   handleFormClose();
 }
 
 function handleProfileFormOpen() {
+  formsProperties[0].inputFirstVal = profileName.textContent;
+  formsProperties[0].inputScndVal = profileJob.textContent;
+
   const containerElement = createForm(
     formsProperties[0],
     handleProfileFormSubmit
   );
   popup.append(containerElement);
-  popup.classList.add("popup_opened");
+  popup.classList.toggle("popup_opened");
 }
+/************** Edit profile form *******************/
+
+/*************** New place form ********************/
+function handleAddPlaceFormSubmit(evt) {
+  evt.preventDefault();
+
+  const newCard = {
+    name: inputFirst.value,
+    link: inputScnd.value,
+  };
+
+  if (newCard.name === "") {
+    newCard.name = "Untitled image";
+  }
+
+  generateCard(newCard);
+
+  handleFormClose();
+}
+
+function handleAddPlaceFormOpen() {
+  const containerElement = createForm(
+    formsProperties[1],
+    handleAddPlaceFormSubmit
+  );
+  popup.append(containerElement);
+  popup.classList.toggle("popup_opened");
+}
+/*************** New place form ********************/
 
 function handleFormClose() {
   const popupChild = popup.firstElementChild;
   popupChild.remove();
-  popup.classList.remove("popup_opened");
+  popup.classList.toggle("popup_opened");
 }
 
 profileEditBtn.addEventListener("click", handleProfileFormOpen);
+profileAddBtn.addEventListener("click", handleAddPlaceFormOpen);
