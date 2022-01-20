@@ -118,7 +118,7 @@ function generateCard(cardData) {
 }
 
 function handlePictureOpen(evt) {
-  const popupImg = createPopupImg();
+  /* const popupImg = createPopupImg(); */
 }
 
 function createForm(formProperties, handleButtonSubmitFunc) {
