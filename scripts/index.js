@@ -1,8 +1,4 @@
 let formElement = document.querySelector(".form-edit-profile");
-let nameInput = formElement.querySelector(
-  ".form-edit-profile__input_type_name"
-);
-let jobInput = formElement.querySelector(".form-edit-profile__input_type_job");
 
 let profile = document.querySelector(".profile");
 let profileName = profile.querySelector(".profile-info__name");
@@ -10,10 +6,28 @@ let profileJob = profile.querySelector(".profile-info__job");
 let profileEditBtn = profile.querySelector(".profile-info__button-edit");
 
 let popup = document.querySelector(".popup");
-let popupCloseBtn = popup.querySelector(".popup__button-close");
 
 const cardContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#template-element").content;
+
+const formsProperties = [
+  {
+    formHeadingVal: "Edit profile",
+    formNameAttr: "form-edit-profile",
+    inputFirstNameAttr: "name",
+    inputScndNameAttr: "job",
+    buttonSubmitVal: "Save",
+    buttonSubmitAriaLbl: "save",
+  },
+  {
+    formHeadingVal: "New place",
+    formNameAttr: "form-new-place",
+    inputFirstNameAttr: "title",
+    inputScndNameAttr: "image link",
+    buttonSubmitVal: "Create",
+    buttonSubmitAriaLbl: "create",
+  },
+];
 
 const initialCards = [
   {
@@ -90,26 +104,62 @@ function generateCard(cardData) {
   cardContainer.append(placeCard);
 }
 
+function createForm(formProperties, handleButtonSubmitFunc) {
+  const containerTemplate = document.querySelector(
+    "#template-popup-container"
+  ).content;
+
+  const containerElement = containerTemplate
+    .querySelector(".popup__container")
+    .cloneNode(true);
+  const formElement = containerElement.querySelector(".form");
+  const buttonPopupClose = containerElement.querySelector(
+    ".popup__button-close"
+  );
+  const inputFirst = formElement.querySelector("#inputFirst");
+  const inputScnd = formElement.querySelector("#inputScnd");
+  const buttonSubmit = formElement.querySelector(".form__button-submit");
+
+  containerElement.querySelector(".form__heading").textContent =
+    formProperties.formHeadingVal;
+  formElement.name = formProperties.formNameAttr;
+
+  inputFirst.name = formProperties.inputFirstNameAttr;
+  inputFirst.value = profileName.textContent;
+
+  inputScnd.name = formProperties.inputScndNameAttr;
+  inputScnd.value = profileJob.textContent;
+
+  buttonPopupClose.addEventListener("click", handleFormClose);
+
+  buttonSubmit.textContent = formProperties.buttonSubmitVal;
+  buttonSubmit.ariaLabel = formProperties.buttonSubmitAriaLbl;
+  buttonSubmit.addEventListener("click", handleButtonSubmitFunc);
+
+  return containerElement;
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-
-  handleProfileFormClose(evt);
+  profileName.textContent = inputFirst.value;
+  profileJob.textContent = inputScnd.value;
+  handleFormClose();
 }
 
-function handleProfileFormOpen(evt) {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-
+function handleProfileFormOpen() {
+  const containerElement = createForm(
+    formsProperties[0],
+    handleProfileFormSubmit
+  );
+  popup.append(containerElement);
   popup.classList.add("popup_opened");
 }
 
-function handleProfileFormClose(evt) {
+function handleFormClose() {
+  const popupChild = popup.firstElementChild;
+  popupChild.remove();
   popup.classList.remove("popup_opened");
 }
 
-formElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditBtn.addEventListener("click", handleProfileFormOpen);
-popupCloseBtn.addEventListener("click", handleProfileFormClose);

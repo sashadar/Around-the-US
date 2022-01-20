@@ -19,10 +19,16 @@
 @import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__container/popup__container.css");
 @import url("../blocks/popup/__button-close/popup__button-close.css");
-@import url("../blocks/form-edit-profile/form-edit-profile.css");
+
+@import url("../blocks/form/form.css");
+@import url("../blocks/form/__heading/form__heading.css");
+@import url("../blocks/form/__input/form__input.css");
+@import url("../blocks/form/__button-submit/form__button-submit.css");
+
+/* @import url("../blocks/form-edit-profile/form-edit-profile.css");
 @import url("../blocks/form-edit-profile/__heading/form-edit-profile__heading.css");
 @import url("../blocks/form-edit-profile/__input/form-edit-profile__input.css");
-@import url("../blocks/form-edit-profile/__button-submit/form-edit-profile__button-submit.css");
+@import url("../blocks/form-edit-profile/__button-submit/form-edit-profile__button-submit.css"); */
 
 @import url("../blocks/elements/elements.css");
 @import url("../blocks/element/element.css");
