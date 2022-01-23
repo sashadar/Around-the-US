@@ -13,44 +13,43 @@
     <link rel="stylesheet" href="pages/index.css" />
     <title>Around The U.S.</title>
   </head>
-  <body>
-    <div class="page">
-      <header class="header">
+  <body class="page">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="images/logo/header-logo.svg"
+        alt="Around the U.S. logo"
+      />
+    </header>
+    <main class="content">
+      <section class="profile">
         <img
-          class="header__logo"
-          src="images/logo/header-logo.svg"
-          alt="Around the U.S. logo"
+          class="avatar"
+          src="images/jacq-cousteau-avatar-pic.png"
+          alt="Jacques Cousteau photo"
         />
-      </header>
-      <main class="content">
-        <section class="profile">
-          <img
-            class="avatar"
-            src="images/jacq-cousteau-avatar-pic.png"
-            alt="Jacques Cousteau photo"
-          />
-          <div class="profile-info">
-            <h1 class="profile-info__name">Jacques Cousteau</h1>
-            <button
-              class="profile-info__button-edit"
-              type="button"
-              aria-label="edit"
-            ></button>
-            <p class="profile-info__job">Explorer</p>
-          </div>
+        <div class="profile-info">
+          <h1 class="profile-info__name">Jacques Cousteau</h1>
           <button
-            class="profile__button-add"
+            class="profile-info__button-edit"
             type="button"
-            aria-label="add"
+            aria-label="edit"
           ></button>
-        </section>
-        <section class="popup"></section>
-        <section class="elements"></section>
-      </main>
-      <footer class="footer">
-        <p class="copyright">&copy; 2022 Around The U.S.</p>
-      </footer>
-    </div>
+          <p class="profile-info__job">Explorer</p>
+        </div>
+        <button
+          class="profile__button-add"
+          type="button"
+          aria-label="add"
+        ></button>
+      </section>
+      <section class="popup"></section>
+      <section class="elements"></section>
+    </main>
+    <footer class="footer">
+      <p class="copyright">&copy; 2022 Around The U.S.</p>
+    </footer>
+
     <template id="template-element">
       <article class="element">
         <img class="element__image" src="#" alt="" />
