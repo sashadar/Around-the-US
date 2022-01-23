@@ -28,7 +28,6 @@ The project design and all needed data were provided by Figma tool. [Link to the
 The project is far away from being finished and few improvements are planned in the near future:
 
 - Provide a support for extra wide displays
-- Add/remove photos by users
 - Edit profile picture by users
 - Edit photo grid properties by user
 
