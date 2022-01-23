@@ -63,11 +63,6 @@ const initialCards = [
   },
 ];
 
-const someCard = {
-  name: "Yosemite Valley",
-  link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-};
-
 generateInitialCards(initialCards);
 
 function generateInitialCards(cardDataArray) {
