@@ -96,6 +96,9 @@ function createCard(item) {
 
   cardImage.addEventListener("error", () => {
     cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-4.png";
+    /* cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-23.jpg"; */
+    /* cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-13.png"; */
+    cardImage.alt = "no image available";
   });
 
   cardImage.addEventListener("click", handlePictureOpen);
@@ -127,21 +130,25 @@ function createForm(formProperties, handleButtonSubmitFunc) {
   const containerTemplate = document.querySelector(
     "#template-popup-container"
   ).content;
-
   const containerElement = containerTemplate
     .querySelector(".popup__container")
     .cloneNode(true);
-  const formElement = containerElement.querySelector(".form");
   const buttonPopupClose = containerElement.querySelector(
     ".popup__button-close"
   );
+
+  const formTemplate = document.querySelector("#template-popup-form").content;
+  const formHeading = formTemplate
+    .querySelector(".form__heading")
+    .cloneNode(true);
+  const formElement = formTemplate.querySelector(".form").cloneNode(true);
+  /* const formElement = containerElement.querySelector(".form") */
   const inputFirst = formElement.querySelector("#inputFirst");
   const inputScnd = formElement.querySelector("#inputScnd");
   const buttonSubmit = formElement.querySelector(".form__button-submit");
 
-  containerElement.querySelector(".form__heading").textContent =
-    formProperties.formHeadingVal;
   formElement.name = formProperties.formNameAttr;
+  formHeading.textContent = formProperties.formHeadingVal;
 
   inputFirst.name = formProperties.inputFirstNameAttr;
   inputFirst.value = formProperties.inputFirstVal;
@@ -157,6 +164,9 @@ function createForm(formProperties, handleButtonSubmitFunc) {
   buttonSubmit.ariaLabel = formProperties.buttonSubmitAriaLbl;
 
   formElement.addEventListener("submit", handleButtonSubmitFunc);
+
+  containerElement.append(formHeading);
+  containerElement.append(formElement);
 
   return containerElement;
 }
