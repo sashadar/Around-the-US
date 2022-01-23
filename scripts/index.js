@@ -69,7 +69,6 @@ const someCard = {
 };
 
 generateInitialCards(initialCards);
-generateCard(someCard);
 
 function generateInitialCards(cardDataArray) {
   for (let index = 0; index < cardDataArray.length; index++) {
@@ -77,6 +76,7 @@ function generateInitialCards(cardDataArray) {
   }
 }
 
+/************** Cards *******************/
 function createCard(item) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
 
@@ -117,6 +117,7 @@ function generateCard(cardData) {
   const placeCard = createCard(cardData);
   cardContainer.prepend(placeCard);
 }
+/************** Cards *******************/
 
 function createPopupContainer() {
   const containerTemplate = document.querySelector(
@@ -132,37 +133,6 @@ function createPopupContainer() {
   buttonPopupClose.addEventListener("click", handlePopupClose);
 
   return containerElement;
-}
-
-function createPopupImg(cardImageElement, cardTitleElement) {
-  const containerElement = createPopupContainer();
-
-  const popupImageTemplate = document.querySelector(
-    "#template-popup-image"
-  ).content;
-  const popupImageElement = popupImageTemplate
-    .querySelector(".popup-image")
-    .cloneNode(true);
-  const popupImageTitleElement = popupImageTemplate
-    .querySelector(".popup-image__title")
-    .cloneNode(true);
-
-  popupImageElement.src = cardImageElement.src;
-  popupImageElement.alt = cardImageElement.alt;
-  popupImageTitleElement.textContent = cardTitleElement.textContent;
-
-  containerElement.append(popupImageElement, popupImageTitleElement);
-
-  return containerElement;
-}
-
-function handlePictureOpen(evt) {
-  const cardElement = evt.target.parentElement;
-  const cardElementTitle = cardElement.querySelector(".element__title");
-
-  const containerElement = createPopupImg(evt.target, cardElementTitle);
-  popup.append(containerElement);
-  popup.classList.toggle("popup_opened");
 }
 
 function createForm(formProperties, handleButtonSubmitFunc) {
@@ -252,6 +222,44 @@ function handleAddPlaceFormOpen() {
   popup.classList.toggle("popup_opened");
 }
 /*************** New place form ********************/
+
+/************** Popup Image *******************/
+function createPopupImg(cardImageElement, cardTitleElement) {
+  const containerElement = createPopupContainer();
+  const buttonCloseElement = containerElement.querySelector(
+    ".popup__button-close"
+  );
+
+  const popupImageTemplate = document.querySelector(
+    "#template-popup-image"
+  ).content;
+  const popupImageElement = popupImageTemplate
+    .querySelector(".popup-image")
+    .cloneNode(true);
+  const popupImageTitleElement = popupImageTemplate
+    .querySelector(".popup-image__title")
+    .cloneNode(true);
+
+  buttonCloseElement.classList.add("popup__button-close_aside-img");
+
+  popupImageElement.src = cardImageElement.src;
+  popupImageElement.alt = cardImageElement.alt;
+  popupImageTitleElement.textContent = cardTitleElement.textContent;
+
+  containerElement.append(popupImageElement, popupImageTitleElement);
+
+  return containerElement;
+}
+
+function handlePictureOpen(evt) {
+  const cardElement = evt.target.parentElement;
+  const cardElementTitle = cardElement.querySelector(".element__title");
+
+  const containerElement = createPopupImg(evt.target, cardElementTitle);
+  popup.append(containerElement);
+  popup.classList.toggle("popup_opened");
+}
+/************** Popup Image *******************/
 
 function handlePopupClose() {
   const popupChild = popup.firstElementChild;
