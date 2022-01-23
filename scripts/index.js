@@ -96,8 +96,6 @@ function createCard(item) {
 
   cardImage.addEventListener("error", () => {
     cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-4.png";
-    /* cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-23.jpg"; */
-    /* cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-13.png"; */
     cardImage.alt = "no image available";
   });
 
@@ -120,7 +118,7 @@ function generateCard(cardData) {
   cardContainer.prepend(placeCard);
 }
 
-function createPopupImg(cardImageElement, cardTitleElement) {
+function createPopupContainer() {
   const containerTemplate = document.querySelector(
     "#template-popup-container"
   ).content;
@@ -130,6 +128,14 @@ function createPopupImg(cardImageElement, cardTitleElement) {
   const buttonPopupClose = containerElement.querySelector(
     ".popup__button-close"
   );
+
+  buttonPopupClose.addEventListener("click", handlePopupClose);
+
+  return containerElement;
+}
+
+function createPopupImg(cardImageElement, cardTitleElement) {
+  const containerElement = createPopupContainer();
 
   const popupImageTemplate = document.querySelector(
     "#template-popup-image"
@@ -147,8 +153,6 @@ function createPopupImg(cardImageElement, cardTitleElement) {
 
   containerElement.append(popupImageElement, popupImageTitleElement);
 
-  buttonPopupClose.addEventListener("click", handleFormClose);
-
   return containerElement;
 }
 
@@ -159,28 +163,16 @@ function handlePictureOpen(evt) {
   const containerElement = createPopupImg(evt.target, cardElementTitle);
   popup.append(containerElement);
   popup.classList.toggle("popup_opened");
-
-  /* console.log(cardElement); */
-  /* const containerElement = createPopupImg(); */
 }
 
 function createForm(formProperties, handleButtonSubmitFunc) {
-  const containerTemplate = document.querySelector(
-    "#template-popup-container"
-  ).content;
-  const containerElement = containerTemplate
-    .querySelector(".popup__container")
-    .cloneNode(true);
-  const buttonPopupClose = containerElement.querySelector(
-    ".popup__button-close"
-  );
+  const containerElement = createPopupContainer();
 
   const formTemplate = document.querySelector("#template-popup-form").content;
   const formHeading = formTemplate
     .querySelector(".form__heading")
     .cloneNode(true);
   const formElement = formTemplate.querySelector(".form").cloneNode(true);
-  /* const formElement = containerElement.querySelector(".form") */
   const inputFirst = formElement.querySelector("#inputFirst");
   const inputScnd = formElement.querySelector("#inputScnd");
   const buttonSubmit = formElement.querySelector(".form__button-submit");
@@ -198,8 +190,6 @@ function createForm(formProperties, handleButtonSubmitFunc) {
   inputScnd.name = formProperties.inputScndNameAttr;
   inputScnd.value = formProperties.inputScndVal;
   inputScnd.placeholder = formProperties.inputScndPlacehld;
-
-  buttonPopupClose.addEventListener("click", handleFormClose);
 
   buttonSubmit.textContent = formProperties.buttonSubmitVal;
   buttonSubmit.ariaLabel = formProperties.buttonSubmitAriaLbl;
@@ -219,7 +209,7 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = inputFirst.value;
   profileJob.textContent = inputScnd.value;
 
-  handleFormClose();
+  handlePopupClose();
 }
 
 function handleProfileFormOpen() {
@@ -250,7 +240,7 @@ function handleAddPlaceFormSubmit(evt) {
 
   generateCard(newCard);
 
-  handleFormClose();
+  handlePopupClose();
 }
 
 function handleAddPlaceFormOpen() {
@@ -263,7 +253,7 @@ function handleAddPlaceFormOpen() {
 }
 /*************** New place form ********************/
 
-function handleFormClose() {
+function handlePopupClose() {
   const popupChild = popup.firstElementChild;
   popupChild.remove();
   popup.classList.toggle("popup_opened");
