@@ -120,10 +120,48 @@ function generateCard(cardData) {
   cardContainer.prepend(placeCard);
 }
 
-function createPopupImg() {}
+function createPopupImg(cardImageElement, cardTitleElement) {
+  const containerTemplate = document.querySelector(
+    "#template-popup-container"
+  ).content;
+  const containerElement = containerTemplate
+    .querySelector(".popup__container")
+    .cloneNode(true);
+  const buttonPopupClose = containerElement.querySelector(
+    ".popup__button-close"
+  );
+
+  const popupImageTemplate = document.querySelector(
+    "#template-popup-image"
+  ).content;
+  const popupImageElement = popupImageTemplate
+    .querySelector(".popup-image")
+    .cloneNode(true);
+  const popupImageTitleElement = popupImageTemplate
+    .querySelector(".popup-image__title")
+    .cloneNode(true);
+
+  popupImageElement.src = cardImageElement.src;
+  popupImageElement.alt = cardImageElement.alt;
+  popupImageTitleElement.textContent = cardTitleElement.textContent;
+
+  containerElement.append(popupImageElement, popupImageTitleElement);
+
+  buttonPopupClose.addEventListener("click", handleFormClose);
+
+  return containerElement;
+}
 
 function handlePictureOpen(evt) {
-  /* const popupImg = createPopupImg(); */
+  const cardElement = evt.target.parentElement;
+  const cardElementTitle = cardElement.querySelector(".element__title");
+
+  const containerElement = createPopupImg(evt.target, cardElementTitle);
+  popup.append(containerElement);
+  popup.classList.toggle("popup_opened");
+
+  /* console.log(cardElement); */
+  /* const containerElement = createPopupImg(); */
 }
 
 function createForm(formProperties, handleButtonSubmitFunc) {
@@ -146,6 +184,9 @@ function createForm(formProperties, handleButtonSubmitFunc) {
   const inputFirst = formElement.querySelector("#inputFirst");
   const inputScnd = formElement.querySelector("#inputScnd");
   const buttonSubmit = formElement.querySelector(".form__button-submit");
+
+  containerElement.classList.add("popup__container_background-white");
+  containerElement.classList.add("popup__container_bordered");
 
   formElement.name = formProperties.formNameAttr;
   formHeading.textContent = formProperties.formHeadingVal;
