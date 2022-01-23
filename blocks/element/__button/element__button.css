@@ -4,6 +4,7 @@
   background-size: cover;
   margin: 0;
   border: none;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .element__button:hover {

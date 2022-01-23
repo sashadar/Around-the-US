@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-position: center;
   grid-area: profile-info__button-edit;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .profile-info__button-edit:hover {
