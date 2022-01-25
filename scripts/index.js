@@ -4,7 +4,6 @@ const profileJob = profile.querySelector(".profile-info__job");
 const profileEditBtn = profile.querySelector(".profile-info__button-edit");
 const profileAddBtn = profile.querySelector(".profile__button-add");
 
-/* const popupElement = document.querySelector(".popup"); */
 const imageContainer = document.querySelector(
   ".popup__container_content_image"
 );
@@ -21,6 +20,11 @@ const popupAddCard = addCardContainer.closest(".popup");
 
 const formEditProfile = editProfileContainer.querySelector(".form");
 const formAddCard = addCardContainer.querySelector(".form");
+
+const popupImg = imageContainer.querySelector(".popup__image");
+const popupImgTitleElement = imageContainer.querySelector(
+  ".popup__image-title"
+);
 
 const cardContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#template-element").content;
@@ -105,11 +109,6 @@ function handlePictureOpen(evt) {
   const cardElement = evt.target.parentElement;
   const imgElementSrc = evt.target;
   const cardTitleElement = cardElement.querySelector(".element__title");
-
-  const popupImg = imageContainer.querySelector(".popup__image");
-  const popupImgTitleElement = imageContainer.querySelector(
-    ".popup__image-title"
-  );
 
   popupImg.src = imgElementSrc.src;
   popupImg.alt = imgElementSrc.alt;
