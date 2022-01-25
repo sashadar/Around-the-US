@@ -26,6 +26,8 @@ const popupImgTitleElement = imageContainer.querySelector(
   ".popup__image-title"
 );
 
+const popupCloseButtons = document.querySelectorAll(".popup__button-close");
+
 const cardContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#template-element").content;
 
@@ -114,18 +116,11 @@ function handlePictureOpen(evt) {
   popupImg.alt = imgElementSrc.alt;
   popupImgTitleElement.textContent = cardTitleElement.textContent;
 
-  enablePopupButtonClose(popupImage);
-
   popupOpen(popupImage);
 }
 
 function popupOpen(popupElement) {
   popupElement.classList.add("popup_opened");
-}
-
-function enablePopupButtonClose(popupElement) {
-  const popupButtonClose = popupElement.querySelector(".popup__button-close");
-  popupButtonClose.addEventListener("click", handlePopupClose);
 }
 
 function handleEditProfileFormSubmit(evt) {
@@ -158,13 +153,11 @@ function handleEditProfileOpen() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
 
-  enablePopupButtonClose(popupEditProfile);
   popupOpen(popupEditProfile);
 }
 
 function handleAddCardFormOpen() {
   formAddCard.reset();
-  enablePopupButtonClose(popupAddCard);
   popupOpen(popupAddCard);
 }
 
@@ -189,3 +182,6 @@ formEditProfile.addEventListener("submit", handleEditProfileFormSubmit);
 profileEditBtn.addEventListener("click", handleEditProfileOpen);
 formAddCard.addEventListener("submit", handleAddCardFormSubmit);
 profileAddBtn.addEventListener("click", handleAddCardFormOpen);
+popupCloseButtons.forEach((button) => {
+  button.addEventListener("click", handlePopupClose);
+});
