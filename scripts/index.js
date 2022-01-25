@@ -133,9 +133,9 @@ function handlePictureOpen(evt) {
   const imgElementSrc = evt.target;
   const cardTitleElement = cardElement.querySelector(".element__title");
 
-  const popupImg = imageContainer.querySelector(".popup-image");
+  const popupImg = imageContainer.querySelector(".popup__image");
   const popupImgTitleElement = imageContainer.querySelector(
-    ".popup-image__title"
+    ".popup__image-title"
   );
 
   popupImg.src = imgElementSrc.src;
@@ -157,7 +157,6 @@ function enablePopupButtonClose(popupElement) {
 }
 
 function handleEditProfileFormSubmit(evt) {
-  console.log(evt.target);
   evt.preventDefault();
 
   profileName.textContent = formEditProfile.querySelector(
