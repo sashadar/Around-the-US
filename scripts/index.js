@@ -25,33 +25,6 @@ const formAddCard = addCardContainer.querySelector(".form");
 const cardContainer = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#template-element").content;
 
-/* const formsProperties = [
-  {
-    formHeadingVal: "Edit profile",
-    formNameAttr: "form-edit-profile",
-    inputFirstNameAttr: "name",
-    inputFirstVal: "",
-    inputFirstPlacehld: "",
-    inputScndNameAttr: "job",
-    inputScndVal: "",
-    inputScndPlacehld: "",
-    buttonSubmitVal: "Save",
-    buttonSubmitAriaLbl: "save",
-  },
-  {
-    formHeadingVal: "New place",
-    formNameAttr: "form-new-place",
-    inputFirstNameAttr: "title",
-    inputFirstVal: "",
-    inputFirstPlacehld: "Title",
-    inputScndNameAttr: "image link",
-    inputScndVal: "",
-    inputScndPlacehld: "Image link",
-    buttonSubmitVal: "Create",
-    buttonSubmitAriaLbl: "create",
-  },
-]; */
-
 const initialCards = [
   {
     name: "Yosemite Valley",
