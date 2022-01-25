@@ -192,6 +192,7 @@ function handleEditProfileOpen() {
 }
 
 function handleAddCardFormOpen() {
+  formAddCard.reset();
   enablePopupButtonClose(popupAddCard);
   popupOpen(popupAddCard);
 }
