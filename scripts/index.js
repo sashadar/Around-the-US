@@ -132,10 +132,10 @@ function openPopup(popupElement) {
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  profileName.textContent = ormEditProfileInputName.value;
-  profileJob.textContent = ormEditProfileInputJob.value;
+  profileName.textContent = formEditProfileInputName.value;
+  profileJob.textContent = formEditProfileInputJob.value;
 
-  popupClose(evt.target.closest(".popup"));
+  handlePopupClose(evt);
 }
 
 function handlePopupClose(evt) {
