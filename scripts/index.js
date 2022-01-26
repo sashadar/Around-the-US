@@ -19,6 +19,12 @@ const popupImage = imageContainer.closest(".popup");
 const popupAddCard = addCardContainer.closest(".popup");
 
 const formEditProfile = editProfileContainer.querySelector(".form");
+const formEditProfileInputName = formEditProfile.querySelector(
+  ".form__input_type_name"
+);
+const formEditProfileInputJob = formEditProfile.querySelector(
+  ".form__input_type_job"
+);
 const formAddCard = addCardContainer.querySelector(".form");
 
 const popupImg = imageContainer.querySelector(".popup__image");
@@ -116,22 +122,18 @@ function handlePictureOpen(evt) {
   popupImg.alt = imgElementSrc.alt;
   popupImgTitleElement.textContent = cardTitleElement.textContent;
 
-  popupOpen(popupImage);
+  openPopup(popupImage);
 }
 
-function popupOpen(popupElement) {
+function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
 }
 
 function handleEditProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  profileName.textContent = formEditProfile.querySelector(
-    ".form__input_type_name"
-  ).value;
-  profileJob.textContent = formEditProfile.querySelector(
-    ".form__input_type_job"
-  ).value;
+  profileName.textContent = ormEditProfileInputName.value;
+  profileJob.textContent = ormEditProfileInputJob.value;
 
   popupClose(evt.target.closest(".popup"));
 }
@@ -153,12 +155,12 @@ function handleEditProfileOpen() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
 
-  popupOpen(popupEditProfile);
+  openPopup(popupEditProfile);
 }
 
 function handleAddCardFormOpen() {
   formAddCard.reset();
-  popupOpen(popupAddCard);
+  openPopup(popupAddCard);
 }
 
 function handleAddCardFormSubmit(evt) {
