@@ -1,3 +1,5 @@
+import { validationSettings, disableButtonSubmit } from "./validate.js";
+
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile-info__name");
 const profileJob = profile.querySelector(".profile-info__job");
@@ -89,11 +91,6 @@ function createCard(item) {
 
   cardTitle.textContent = item.name;
 
-  cardImage.addEventListener("error", () => {
-    cardImage.src = "https://www.freeiconspng.com/uploads/no-image-icon-4.png";
-    cardImage.alt = "no image available";
-  });
-
   cardImage.addEventListener("click", handlePictureOpen);
 
   cardButtonLike.addEventListener("click", function (evt) {
@@ -153,10 +150,6 @@ function handleAddCardFormSubmit(evt) {
     name: evt.target.querySelector(".form__input_type_title").value,
     link: evt.target.querySelector(".form__input_type_link").value,
   };
-
-  if (newCard.name === "") {
-    newCard.name = "Untitled image";
-  }
 
   generateCard(newCard);
 
