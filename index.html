@@ -59,14 +59,16 @@
               type="text"
               class="form__input form__input_type_name popup__input"
               name="name"
+              id="name-input"
             />
-            <span class="popup__error"></span>
+            <span class="popup__error" id="name-input-error"></span>
             <input
               type="text"
               class="form__input form__input_type_job popup__input"
               name="job"
+              id="job-input"
             />
-            <span class="popup__error"></span>
+            <span class="popup__error" id="job-input-error"></span>
             <button
               type="submit"
               class="form__button-submit popup__button"
@@ -94,15 +96,17 @@
               class="form__input form__input_type_title popup__input"
               placeholder="Title"
               name="title"
+              id="title-input"
             />
-            <span class="popup__error"></span>
+            <span class="popup__error" id="title-input-error"></span>
             <input
-              type="text"
+              type="url"
               class="form__input form__input_type_link popup__input"
               placeholder="Image link"
               name="image link"
+              id="image-link-input"
             />
-            <span class="popup__error"></span>
+            <span class="popup__error" id="image-link-input-error"></span>
             <button
               type="submit"
               class="form__button-submit popup__button"
@@ -150,5 +154,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
