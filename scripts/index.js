@@ -1,4 +1,4 @@
-import { validationSettings, disableButtonSubmit } from "./validate.js";
+import { validationSettings, resetInputValidation } from "./validate.js";
 
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile-info__name");
@@ -66,25 +66,7 @@ const initialCards = [
   },
 ];
 
-function handleOverlayClick(evt) {
-  if (evt.target.classList.contains("popup_opened")) {
-    closePopup(evt.target);
-  }
-}
-
-function handleKeyPress(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-}
-
-function generateInitialCards(cardDataArray) {
-  for (let index = 0; index < cardDataArray.length; index++) {
-    generateCard(cardDataArray[index]);
-  }
-}
-
-function createCard(item) {
+const createCard = (item) => {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector(".element__image");
   const cardTitle = cardElement.querySelector(".element__title");
@@ -100,23 +82,51 @@ function createCard(item) {
   cardTitle.textContent = item.name;
 
   cardImage.addEventListener("click", handlePictureOpen);
-  cardButtonLike.addEventListener("click", function (evt) {
+  cardButtonLike.addEventListener("click", (evt) => {
     evt.target.classList.toggle("element__button_action_like_active");
   });
-  cardButtonDelete.addEventListener("click", function (evt) {
+  cardButtonDelete.addEventListener("click", (evt) => {
     const cardElement = cardButtonDelete.closest(".element");
     cardElement.remove();
   });
 
   return cardElement;
-}
+};
 
-function generateCard(cardData) {
+const generateCard = (cardData) => {
   const placeCard = createCard(cardData);
   cardContainer.prepend(placeCard);
-}
+};
 
-function handlePictureOpen(evt) {
+const generateInitialCards = (cardDataArray) => {
+  for (let index = 0; index < cardDataArray.length; index++) {
+    generateCard(cardDataArray[index]);
+  }
+};
+
+const openPopup = (popupElement) => {
+  popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", handleKeyPress);
+};
+
+const openFormPopup = (popupElement, formElement) => {
+  resetInputValidation(formElement, validationSettings);
+  openPopup(popupElement);
+};
+
+const handleAddCardFormOpen = () => {
+  formAddCard.reset();
+  openFormPopup(popupAddCard, formAddCard);
+};
+
+const handleEditProfileOpen = () => {
+  formEditProfileInputName.value = profileName.textContent;
+  formEditProfileInputJob.value = profileJob.textContent;
+
+  openFormPopup(popupEditProfile, formEditProfile);
+};
+
+const handlePictureOpen = (evt) => {
   const cardElement = evt.target.parentElement;
   const imgElementSrc = evt.target;
   const cardTitleElement = cardElement.querySelector(".element__title");
@@ -126,30 +136,30 @@ function handlePictureOpen(evt) {
   popupImgTitleElement.textContent = cardTitleElement.textContent;
 
   openPopup(popupImage);
-}
+};
 
-function handleEditProfileOpen() {
-  formEditProfileInputName.value = profileName.textContent;
-  formEditProfileInputJob.value = profileJob.textContent;
+const closePopup = (popupElement) => {
+  popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleKeyPress);
+};
 
-  openPopup(popupEditProfile);
-}
+const handlePopupClose = (evt) => {
+  closePopup(evt.target.closest(".popup"));
+};
 
-function handleEditProfileFormSubmit(evt) {
-  evt.preventDefault();
+const handleOverlayClick = (evt) => {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup(evt.target);
+  }
+};
 
-  profileName.textContent = formEditProfileInputName.value;
-  profileJob.textContent = formEditProfileInputJob.value;
+const handleKeyPress = (evt) => {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
+};
 
-  handlePopupClose(evt);
-}
-
-function handleAddCardFormOpen() {
-  formAddCard.reset();
-  openPopup(popupAddCard);
-}
-
-function handleAddCardFormSubmit(evt) {
+const handleAddCardFormSubmit = (evt) => {
   evt.preventDefault();
 
   const newCard = {
@@ -159,21 +169,16 @@ function handleAddCardFormSubmit(evt) {
 
   generateCard(newCard);
   handlePopupClose(evt);
-}
+};
 
-function openPopup(popupElement) {
-  popupElement.classList.add("popup_opened");
-  document.addEventListener("keydown", handleKeyPress);
-}
+const handleEditProfileFormSubmit = (evt) => {
+  evt.preventDefault();
 
-function handlePopupClose(evt) {
-  closePopup(evt.target.closest(".popup"));
-}
+  profileName.textContent = formEditProfileInputName.value;
+  profileJob.textContent = formEditProfileInputJob.value;
 
-function closePopup(popupElement) {
-  popupElement.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleKeyPress);
-}
+  handlePopupClose(evt);
+};
 
 generateInitialCards(initialCards);
 
