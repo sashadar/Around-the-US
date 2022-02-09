@@ -132,11 +132,11 @@ const handleEditProfileOpen = () => {
 
 const handlePictureOpen = (evt) => {
   const cardElement = evt.target.parentElement;
-  const imgElementSrc = evt.target;
+  const imageElement = evt.target;
   const cardTitleElement = cardElement.querySelector(".element__title");
 
-  popupImg.src = imgElementSrc.src;
-  popupImg.alt = imgElementSrc.alt;
+  popupImg.src = imageElement.src;
+  popupImg.alt = imageElement.alt;
   popupImgTitleElement.textContent = cardTitleElement.textContent;
 
   openPopup(popupImage);
