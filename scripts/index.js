@@ -66,6 +66,15 @@ const initialCards = [
   },
 ];
 
+const handleButtonLikePress = (evt) => {
+  evt.target.classList.toggle("element__button_action_like_active");
+};
+
+const handleDeleteCard = (evt) => {
+  const cardElement = evt.target.closest(".element");
+  cardElement.remove();
+};
+
 const createCard = (item) => {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector(".element__image");
@@ -82,13 +91,8 @@ const createCard = (item) => {
   cardTitle.textContent = item.name;
 
   cardImage.addEventListener("click", handlePictureOpen);
-  cardButtonLike.addEventListener("click", (evt) => {
-    evt.target.classList.toggle("element__button_action_like_active");
-  });
-  cardButtonDelete.addEventListener("click", (evt) => {
-    const cardElement = cardButtonDelete.closest(".element");
-    cardElement.remove();
-  });
+  cardButtonLike.addEventListener("click", handleButtonLikePress);
+  cardButtonDelete.addEventListener("click", handleDeleteCard);
 
   return cardElement;
 };
