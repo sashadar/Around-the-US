@@ -60,7 +60,7 @@ const enableButtonSubmit = (buttonElement, { inactiveButtonClass }) => {
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
+  inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
