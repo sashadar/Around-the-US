@@ -25,6 +25,7 @@ The project design and all needed data were provided by Figma tool.
 **Features**
 
 - Responsive design - a page looks great across different resolutions
+- Smooth transitions for beter user experience
 - Input validation in "Edit profile" and "New place" forms enabled.
 - Image enlargement and preview mode available.
 
