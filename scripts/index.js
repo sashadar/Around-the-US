@@ -14,9 +14,7 @@ const imageContainer = document.querySelector(
 );
 const popupPreview = imageContainer.closest(".popup");
 const popupImage = imageContainer.querySelector(".popup__image");
-const popupImgTitleElement = imageContainer.querySelector(
-  ".popup__image-title"
-);
+const popupImageTitle = imageContainer.querySelector(".popup__image-title");
 
 const editProfileContainer = document.querySelector(
   ".popup__container_content_edit-profile"
@@ -137,7 +135,7 @@ const handlePictureOpen = (evt) => {
 
   popupImage.src = imageElement.src;
   popupImage.alt = imageElement.alt;
-  popupImgTitleElement.textContent = cardTitleElement.textContent;
+  popupImageTitle.textContent = cardTitleElement.textContent;
 
   openPopup(popupPreview);
 };
