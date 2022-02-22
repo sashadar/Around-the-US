@@ -25,6 +25,7 @@ class Card {
       .cloneNode(true);
   }
 
+  /* call _getTemplate() before using this function */
   _defineElementVariables() {
     this._elementImage = this._element.querySelector(".element__image");
     this._elementButtonDelete = this._element.querySelector(
@@ -36,6 +37,7 @@ class Card {
     );
   }
 
+  /* call _defineElementVariables() before using this function */
   _setEventListeners() {
     this._elementImage.addEventListener("click", () => {
       this._handleImagePreview();
@@ -50,6 +52,7 @@ class Card {
 
   generateCard() {
     this._getTemplate();
+    this._defineElementVariables();
     this._setEventListeners();
     this._elementImage.src = this._imageTitle;
     this._elementTitle = this._elementImage.alt = this._imageTitle;
@@ -75,3 +78,5 @@ class Card {
     );
   }
 }
+
+export default Card;
