@@ -42,7 +42,7 @@ The project is far away from being finished and few improvements are planned in 
 - Provide a support for extra wide displays
 - Edit profile picture by users
 - Edit photo grid properties by user
-- Code refactoring: group each pair of input field - and it's error span into a separate object in order to avoid redundant span search on every "input" event.
+- Code refactoring: group each pair of input field and it's error span into a separate object in order to avoid redundant span search on every "input" event.
 
 [bemmeth]: https://en.bem.info/
 [seo]: https://developers.google.com/search/docs/beginner/seo-starter-guide
