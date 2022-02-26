@@ -1,4 +1,4 @@
-import { openPopup } from "./index.js";
+import { openPopup } from "./utils.js";
 
 const popupImage = document.querySelector(".popup__image");
 const popupImageTitle = document.querySelector(".popup__image-title");
@@ -6,10 +6,16 @@ const popupPreview = popupImage.closest(".popup");
 
 class Card {
   /*
-  _element;
-  _imageTitle;
-  _imageUrl;
-  _templateSelector;
+  Class properties:
+    _element;
+    _imageTitle;
+    _imageUrl;
+    _templateSelector;
+
+    _elementImage;
+    _elementButtonDelete;
+    _elementTitle;
+    _elementButtonLike
   */
 
   constructor(data, templateSelector) {
@@ -25,25 +31,23 @@ class Card {
       .cloneNode(true);
   }
 
-  /* call _getTemplate() before using this function */
   _defineElementVariables() {
     this._elementImage = this._element.querySelector(".element__image");
     this._elementButtonDelete = this._element.querySelector(
       ".element__button_action_delete"
     );
     this._elementTitle = this._element.querySelector(".element__title");
-    this._elementButtonLike = this._element.queryselector(
+    this._elementButtonLike = this._element.querySelector(
       ".element__button_action_like"
     );
   }
 
-  /* call _defineElementVariables() before using this function */
   _setEventListeners() {
     this._elementImage.addEventListener("click", () => {
       this._handleImagePreview();
     });
     this._elementButtonDelete.addEventListener("click", () => {
-      this._handleRemoveElement;
+      this._handleRemoveElement();
     });
     this._elementButtonLike.addEventListener("click", () => {
       this._handleButtonLikePress();
@@ -54,9 +58,8 @@ class Card {
     this._getTemplate();
     this._defineElementVariables();
     this._setEventListeners();
-    this._elementImage.src = this._imageTitle;
+    this._elementImage.src = this._imageUrl;
     this._elementTitle = this._elementImage.alt = this._imageTitle;
-
     return this._element;
   }
 
