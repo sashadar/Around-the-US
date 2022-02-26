@@ -64,7 +64,6 @@ class Card {
   }
 
   /*Event Listeners*/
-
   _handleImagePreview() {
     popupImage.src = this._imageUrl;
     popupImageTitle.textContent = popupImage.alt = this._imageTitle;
