@@ -76,12 +76,12 @@ const handlePopupClose = (evt) => {
 
 const handleAddCardFormSubmit = (evt) => {
   evt.preventDefault();
-  const newCard = {
+  const cardData = {
     name: evt.target.querySelector(".form__input_type_title").value,
     link: evt.target.querySelector(".form__input_type_link").value,
   };
 
-  generateCard(newCard, "#template-element");
+  generateCard(cardData);
   handlePopupClose(evt);
 };
 

@@ -4,8 +4,10 @@ import * as utils from "./utils.js";
 import { validationSettings, initialCards } from "./constants.js";
 
 const cardContainer = document.querySelector(".elements");
-const formEditProfile = document.getElementsByName("form-edit-profile")[0];
-const formAddCard = document.getElementsByName("form-add-card")[0];
+const formEditProfile = document.querySelector(
+  "form[name = 'form-edit-profile']"
+);
+const formAddCard = document.querySelector("form[name = 'form-add-card']");
 
 const editProfileFormValidator = new FormValidator(
   validationSettings,
@@ -18,16 +20,20 @@ const addCard = (cardElement) => {
   cardContainer.prepend(cardElement);
 };
 
-const generateCard = (cardData, templateSelector) => {
-  const newCardObject = new Card(cardData, templateSelector);
-  const newCard = newCardObject.generateCard();
+const createCard = (cardData) => {
+  const newCardObject = new Card(cardData, "#template-element");
+  return newCardObject.generateCard();
+};
+
+const generateCard = (cardData) => {
+  const newCard = createCard(cardData);
   addCard(newCard);
 };
 
 const generateInitialCards = (cardDataArray) => {
-  for (let index = 0; index < cardDataArray.length; index++) {
-    generateCard(cardDataArray[index], "#template-element");
-  }
+  cardDataArray.forEach((cardDataItem) => {
+    generateCard(cardDataItem);
+  });
 };
 
 editProfileFormValidator.enableValidation();
