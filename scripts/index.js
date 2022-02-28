@@ -46,11 +46,6 @@ const enableValidation = (validationSettings) => {
   });
 };
 
-const openFormPopup = (popupElement, formValidator) => {
-  formValidator.resetInputValidation();
-  openPopup(popupElement);
-};
-
 const handleAddCardFormOpen = () => {
   formAddCard.reset();
   formValidators[formAddCard.getAttribute("name")].resetInputValidation();
