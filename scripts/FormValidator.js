@@ -1,24 +1,4 @@
 class FormValidator {
-  /*
-   class properties:
-    _formElement;
-    _settings
-    _inputList
-    _buttonSubmit
-   */
-
-  /*
-  settings object template:
-    const settings = {
-      formSelector: ".popup__form",
-      inputSelector: ".popup__input",
-      submitButtonSelector: ".popup__button",
-      inactiveButtonClass: "popup__button_disabled",
-      inputErrorClass: "popup__input_type_error",
-      errorClass: "popup__error_visible",
-    };
- */
-
   constructor(settings, formElement) {
     this._formElement = formElement;
     this._settings = settings;
