@@ -5,19 +5,6 @@ const popupImageTitle = document.querySelector(".popup__image-title");
 const popupPreview = popupImage.closest(".popup");
 
 class Card {
-  /*
-  Class properties:
-    _element;
-    _imageTitle;
-    _imageUrl;
-    _templateSelector;
-
-    _elementImage;
-    _elementButtonDelete;
-    _elementTitle;
-    _elementButtonLike
-  */
-
   constructor(data, templateSelector) {
     this._imageTitle = data.name;
     this._imageUrl = data.link;
