@@ -1,12 +1,12 @@
 class Section {
-  constructor({ items, renderer }, containerSelector) {
+  constructor({ items, renderer }, sectionSelector) {
     this._items = items;
     this._renderer = renderer;
-    this._container = document.querySelector(containerSelector);
+    this._section = document.querySelector(sectionSelector);
   }
 
   addItem(element) {
-    this._container.append(element);
+    this._section.append(element);
   }
 
   renderItems() {
