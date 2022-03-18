@@ -1,10 +1,9 @@
 class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
+    /* this._popupSelector = popupSelector; */
     this._element = document.querySelector(popupSelector);
+    this._buttonClose = this._element.querySelector("popup__button-close");
   }
-
-  _getTemplate() {}
 
   open() {
     this._element.classList.add("popup_opened");
@@ -30,7 +29,11 @@ class Popup {
 
   setEventListeners() {
     this._element.addEventListener("click", this._handleOverlayClick);
+
+    this._buttonClose.addEventListener("click", () => {
+      this.close();
+    });
   }
 }
 
-export { open, close, setEventListeners };
+export default Popup;
