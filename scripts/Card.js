@@ -1,14 +1,15 @@
-import { openPopup } from "./utils.js";
+/* import { openPopup } from "./utils.js"; */
 
-const popupImage = document.querySelector(".popup__image");
+/* const popupImage = document.querySelector(".popup__image");
 const popupImageTitle = document.querySelector(".popup__image-title");
-const popupPreview = popupImage.closest(".popup");
+const popupPreview = popupImage.closest(".popup"); */
 
 class Card {
-  constructor(data, templateSelector) {
+  constructor({ data, templateSelector, handleCardClick }) {
     this._imageTitle = data.name;
     this._imageUrl = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -31,7 +32,7 @@ class Card {
 
   _setEventListeners() {
     this._elementImage.addEventListener("click", () => {
-      this._handleImagePreview();
+      this._handleCardClick(this._imageTitle, this._imageUrl);
     });
     this._elementButtonDelete.addEventListener("click", () => {
       this._handleRemoveElement();
@@ -51,11 +52,11 @@ class Card {
   }
 
   /*Event Listeners*/
-  _handleImagePreview() {
+  /*   _handleImagePreview() {
     popupImage.src = this._imageUrl;
     popupImageTitle.textContent = popupImage.alt = this._imageTitle;
     openPopup(popupPreview);
-  }
+  } */
 
   _handleRemoveElement() {
     this._element.remove();

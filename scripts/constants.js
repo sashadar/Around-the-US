@@ -34,4 +34,23 @@ const initialCards = [
   },
 ];
 
-export { validationSettings, initialCards };
+const userInfoSelectors = {
+  nameselector: ".profile-info__name",
+  jobSelector: ".profile-info__job",
+};
+
+const cardSectionSelector = ".elements";
+
+const popupSelectors = {
+  popupEditProfile: ".popup_content_edit-profile",
+  popupAddCard: ".popup_content_add-card",
+  popupWithImage: ".popup_content_image",
+};
+
+export {
+  validationSettings,
+  initialCards,
+  userInfoSelectors,
+  popupSelectors,
+  cardSectionSelector,
+};

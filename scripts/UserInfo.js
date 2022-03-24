@@ -12,7 +12,7 @@ class UserInfo {
     return this._userInfo;
   }
 
-  setUserInfo(name, job) {
+  setUserInfo({ name, job }) {
     this._nameElement.textContent = name;
     this._jobElement.textContent = job;
   }
