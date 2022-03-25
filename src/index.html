@@ -10,24 +10,20 @@
     />
     <meta name="keywords" content="html, css, javascript" />
     <meta name="author" content="Alex Darincev" />
-    <link rel="stylesheet" href="page/index.css" />
+    <link rel="stylesheet" href="pages/index.css" />
     <title>Around The U.S.</title>
   </head>
   <body class="page">
     <header class="header">
-      <img
-        class="header__logo"
-        src="images/logo/header-logo.svg"
-        alt="Around the U.S. logo"
+      <img class="header__logo" src="<%=
+      require("./images/logo/header-logo.svg")%>"%" alt="Around the U.S. logo"
       />
     </header>
     <main class="content">
       <section class="profile">
-        <img
-          class="avatar"
-          src="images/jacq-cousteau-avatar-pic.png"
-          alt="Jacques Cousteau photo"
-        />
+        <img class="avatar" src="<%=
+        require("./images/jacq-cousteau-avatar-pic.png")%>"%" alt="Jacques
+        Cousteau photo" />
         <div class="profile-info">
           <h1 class="profile-info__name">Jacques Cousteau</h1>
           <button
@@ -162,6 +158,6 @@
         </div>
       </article>
     </template>
-    <script src="./page/index.js" type="module"></script>
+    <!-- <script src="./pages/index.js" type="module"></script> -->
   </body>
 </html>
