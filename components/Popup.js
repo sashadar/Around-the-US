@@ -3,6 +3,7 @@ class Popup {
     /* this._popupSelector = popupSelector; */
     this._element = document.querySelector(popupSelector);
     this._buttonClose = this._element.querySelector(".popup__button-close");
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
   open() {
@@ -21,14 +22,12 @@ class Popup {
     }
   }
 
-  _handleOverlayClick(evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-      this.close();
-    }
-  }
-
   setEventListeners() {
-    this._element.addEventListener("click", this._handleOverlayClick);
+    this._element.addEventListener("click", (evt) => {
+      if (evt.target.classList.contains("popup_opened")) {
+        this.close();
+      }
+    });
 
     this._buttonClose.addEventListener("click", () => {
       this.close();

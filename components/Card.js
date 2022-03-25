@@ -1,12 +1,6 @@
-/* import { openPopup } from "./utils.js"; */
-
-/* const popupImage = document.querySelector(".popup__image");
-const popupImageTitle = document.querySelector(".popup__image-title");
-const popupPreview = popupImage.closest(".popup"); */
-
 class Card {
   constructor({ data, templateSelector, handleCardClick }) {
-    this._imageTitle = data.name;
+    this._imageTitle = data.title;
     this._imageUrl = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
@@ -47,16 +41,10 @@ class Card {
     this._defineElementVariables();
     this._setEventListeners();
     this._elementImage.src = this._imageUrl;
-    this._elementTitle = this._elementImage.alt = this._imageTitle;
+    this._elementTitle.textContent = this._elementImage.alt = this._imageTitle;
+
     return this._element;
   }
-
-  /*Event Listeners*/
-  /*   _handleImagePreview() {
-    popupImage.src = this._imageUrl;
-    popupImageTitle.textContent = popupImage.alt = this._imageTitle;
-    openPopup(popupPreview);
-  } */
 
   _handleRemoveElement() {
     this._element.remove();
