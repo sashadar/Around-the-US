@@ -18,6 +18,8 @@ import {
   formEditProfileInputJob,
 } from "../utils/constants.js";
 
+import "./index.css";
+
 const profile = document.querySelector(".profile");
 
 const profileEditBtn = profile.querySelector(".profile-info__button-edit");
