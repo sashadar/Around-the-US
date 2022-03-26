@@ -71,7 +71,6 @@ const createCard = (cardData) => {
 
 const handleEditProfileFormSubmit = (data) => {
   userInfo.setUserInfo({ name: data.name, job: data.job });
-  const info = userInfo.getUserInfo();
 };
 
 const handleAddCardFormSubmit = (data) => {
