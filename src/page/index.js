@@ -78,8 +78,6 @@ const handleAddCardFormSubmit = (data) => {
     title: data.title,
     link: data.link,
   };
-  console.log(cardData.title);
-  console.log(cardData.link);
   const newCard = createCard(cardData);
   cardList.addItem(newCard);
 };
