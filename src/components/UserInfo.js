@@ -6,11 +6,11 @@ class UserInfo {
   }
 
   getUserInfo() {
-    this._name = this._nameElement.textContent;
-    this._job = this._jobElement.textContent;
-    this._userInfo = { name: this._name, job: this._job };
+    const name = this._nameElement.textContent;
+    const job = this._jobElement.textContent;
+    const userInfo = { name: name, job: job };
 
-    return this._userInfo;
+    return userInfo;
   }
 
   setUserInfo({ name, job }) {
