@@ -19,6 +19,7 @@ import {
 } from "../utils/constants.js";
 
 import "./index.css";
+import { data } from "autoprefixer";
 
 const profile = document.querySelector(".profile");
 
@@ -60,12 +61,16 @@ const enableValidation = (validationSettings) => {
 
 const createCard = (cardData) => {
   const newCardObject = new Card({
-    data: cardData,
+    name: cardData.name,
+    link: cardData.link,
+    id: cardData._id,
+    likes: cardData.likes,
     templateSelector: "#template-element",
-    handleCardClick: (title, link) => {
-      popupWithImage.open(title, link);
+    handleCardClick: (name, link) => {
+      popupWithImage.open(name, link);
     },
   });
+
   return newCardObject.generateCard();
 };
 
@@ -75,7 +80,7 @@ const handleEditProfileFormSubmit = (data) => {
 
 const handleAddCardFormSubmit = (data) => {
   const cardData = {
-    title: data.title,
+    name: data.title,
     link: data.link,
   };
   const newCard = createCard(cardData);
