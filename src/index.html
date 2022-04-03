@@ -12,17 +12,20 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="avatar" src="<%=
-        require("./images/jacq-cousteau-avatar-pic.png")%>" alt="Jacques
-        Cousteau photo" >
+        <div class="avatar__overlay">
+          <img class="avatar" src="<%=
+          require("./images/jacq-cousteau-avatar-pic.png")%>" alt="Avatar
+          picture" />
+        </div>
+
         <div class="profile-info">
-          <h1 class="profile-info__name">Jacques Cousteau</h1>
+          <h1 class="profile-info__name"></h1>
           <button
             class="profile-info__button-edit"
             type="button"
             aria-label="edit"
           ></button>
-          <p class="profile-info__job">Explorer</p>
+          <p class="profile-info__job"></p>
         </div>
         <button
           class="profile__button-add"
@@ -62,6 +65,37 @@
               required
             />
             <span class="popup__error" id="job-input-error"></span>
+            <button
+              type="submit"
+              class="form__button-submit popup__button"
+              aria-label="save"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_content_edit-avatar">
+        <div
+          class="popup__container popup__container_content_edit-avatar popup__container_content_form"
+        >
+          <button
+            type="button"
+            class="popup__button-close popup__button-close_content_form"
+            aria-label="close"
+          ></button>
+
+          <form class="form popup__form" name="form-edit-avatar" novalidate>
+            <h2 class="form__heading">Change profile picture</h2>
+            <input
+              type="url"
+              class="form__input form__input_type_link popup__input"
+              placeholder="Image link"
+              name="link"
+              id="avatar-link-input"
+              required
+            />
+            <span class="popup__error" id="avatar-link-input-error"></span>
             <button
               type="submit"
               class="form__button-submit popup__button"
@@ -123,6 +157,28 @@
           ></button>
           <img class="popup__image" src="#" alt="#" />
           <p class="popup__image-title"></p>
+        </div>
+      </section>
+      <section class="popup popup_content_confirmation">
+        <div
+          class="popup__container popup__container_content_confirmation popup__container_content_form"
+        >
+          <button
+            type="button"
+            class="popup__button-close popup__button-close_content_form"
+            aria-label="close"
+          ></button>
+
+          <form class="form popup__form" name="form-confirmation" novalidate>
+            <h2 class="form__heading">Are you sure?</h2>
+            <button
+              type="submit"
+              class="form__button-submit popup__button"
+              aria-label="save"
+            >
+              Yes
+            </button>
+          </form>
         </div>
       </section>
       <section class="elements"></section>

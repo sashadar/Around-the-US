@@ -7,36 +7,10 @@ const validationSettings = {
   errorClass: "popup__error_visible",
 };
 
-const initialCards = [
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-];
-
 const userInfoSelectors = {
   nameselector: ".profile-info__name",
   jobSelector: ".profile-info__job",
+  avatarSelector: ".avatar",
 };
 
 const cardSectionSelector = ".elements";
@@ -45,6 +19,18 @@ const popupSelectors = {
   popupEditProfile: ".popup_content_edit-profile",
   popupAddCard: ".popup_content_add-card",
   popupWithImage: ".popup_content_image",
+  popupEditAvatar: ".popup_content_edit-avatar",
+  popupConfirm: ".popup_content_confirmation",
+};
+
+const popupFormSaveButtonLabels = {
+  submitButtonLabel: "Save",
+  submitButtonAltLabel: "Saving...",
+};
+
+const popupFormCreateButtonLabels = {
+  submitButtonLabel: "Create",
+  submitButtonAltLabel: "Creating...",
 };
 
 const editProfileContainer = document.querySelector(
@@ -58,14 +44,27 @@ const formEditProfileInputJob = formEditProfile.querySelector(
   ".form__input_type_job"
 );
 
+const editAvatarContainer = document.querySelector(
+  ".popup_content_edit-avatar"
+);
+const formEditAvatar = editAvatarContainer.querySelector(".form");
+const formEditAvatarInputLink = formEditAvatar.querySelector(
+  ".form__input_type_link"
+);
+
 const addCardContainer = document.querySelector(
   ".popup__container_content_add-card"
 );
 const formAddCard = addCardContainer.querySelector(".form");
 
+const apiSettings = {
+  serverUrl: "https://around.nomoreparties.co",
+  groupId: "group-12",
+  token: "652541db-3ac9-4c6c-9895-39ab2ae4c9f3",
+};
+
 export {
   validationSettings,
-  initialCards,
   userInfoSelectors,
   popupSelectors,
   cardSectionSelector,
@@ -73,4 +72,9 @@ export {
   formAddCard,
   formEditProfileInputName,
   formEditProfileInputJob,
+  formEditAvatar,
+  formEditAvatarInputLink,
+  apiSettings,
+  popupFormSaveButtonLabels,
+  popupFormCreateButtonLabels,
 };

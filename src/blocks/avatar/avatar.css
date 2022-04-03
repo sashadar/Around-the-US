@@ -3,4 +3,9 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  transition: opacity, 0.3s ease;
+}
+
+.avatar:hover {
+  opacity: 0.2;
 }
