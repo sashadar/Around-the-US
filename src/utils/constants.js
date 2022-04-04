@@ -28,6 +28,11 @@ const popupFormSaveButtonLabels = {
   submitButtonAltLabel: "Saving...",
 };
 
+const popupFormDeleteButtonLabels = {
+  submitButtonLabel: "Yes",
+  submitButtonAltLabel: "Deleting...",
+};
+
 const popupFormCreateButtonLabels = {
   submitButtonLabel: "Create",
   submitButtonAltLabel: "Creating...",
@@ -76,5 +81,6 @@ export {
   formEditAvatarInputLink,
   apiSettings,
   popupFormSaveButtonLabels,
+  popupFormDeleteButtonLabels,
   popupFormCreateButtonLabels,
 };

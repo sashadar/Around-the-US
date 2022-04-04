@@ -20,6 +20,7 @@ import {
   formEditAvatarInputLink,
   apiSettings,
   popupFormSaveButtonLabels,
+  popupFormDeleteButtonLabels,
   popupFormCreateButtonLabels,
 } from "../utils/constants.js";
 
@@ -64,8 +65,8 @@ const enableValidation = (validationSettings) => {
 };
 
 const popupConfirm = new PopupWithForm(popupSelectors.popupConfirm, {
-  submitButtonLabel: "Yes",
-  submitButtonAltLabel: "Yes",
+  submitButtonLabel: popupFormDeleteButtonLabels.submitButtonLabel,
+  submitButtonAltLabel: popupFormDeleteButtonLabels.submitButtonAltLabel,
 });
 popupConfirm.setEventListeners();
 
@@ -84,13 +85,16 @@ const createCard = (cardData, userId) => {
       handleDeleteCard: (id) => {
         popupConfirm.open();
         popupConfirm.setSubmitHandler(() => {
+          popupConfirm.showLoading();
           api
             .removeCard(id)
             .then(() => {
               newCardObject.removeElement();
               popupConfirm.close();
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(`Error:     ${err}`))
+            .finally(() => popupConfirm.hideLoading());
+          popupConfirm.close();
         });
       },
       handleLikeClick: (id) => {
@@ -121,7 +125,8 @@ const createCard = (cardData, userId) => {
   return newCardObject.generateCard();
 };
 
-const handleEditProfileFormSubmit = (formInputValues) => {
+const handleEditProfileFormSubmit = (formInputValues, editProfileForm) => {
+  editProfileForm.showLoading();
   return api
     .setUserData({
       name: formInputValues.name,
@@ -133,17 +138,30 @@ const handleEditProfileFormSubmit = (formInputValues) => {
         job: userDataResponse.about,
         avatar: userDataResponse.avatar,
       });
+    })
+    .catch((err) => console.log(`Error:     ${err}`))
+    .finally(() => {
+      editProfileForm.close();
+      editProfileForm.hideLoading();
     });
 };
 
-const handleEditAvatarFormSubmit = (formInputValues) => {
-  return api.setUserAvatar(formInputValues.link).then((userDataResponse) => {
-    userInfo.setUserInfo({
-      name: userDataResponse.name,
-      job: userDataResponse.about,
-      avatar: userDataResponse.avatar,
+const handleEditAvatarFormSubmit = (formInputValues, editAvatarForm) => {
+  editAvatarForm.showLoading();
+  return api
+    .setUserAvatar(formInputValues.link)
+    .then((userDataResponse) => {
+      userInfo.setUserInfo({
+        name: userDataResponse.name,
+        job: userDataResponse.about,
+        avatar: userDataResponse.avatar,
+      });
+    })
+    .catch((err) => console.log(`Error:     ${err}`))
+    .finally(() => {
+      editAvatarForm.close();
+      editAvatarForm.hideLoading();
     });
-  });
 };
 
 const popupEditProfile = new PopupWithForm(
@@ -173,61 +191,70 @@ const handleEditProfileOpen = () => {
 };
 
 const handleEditAvatarOpen = () => {
-  formEditAvatarInputLink.val = userInfo.getUserInfo.avatar;
   formValidators[formEditAvatar.getAttribute("name")].resetInputValidation();
   popupEditAvatar.open();
 };
 
 api.setup();
-api.getInitialData().then(([userData, initialCardsData]) => {
-  userInfo.setUserInfo({
-    name: userData.name,
-    job: userData.about,
-    avatar: userData.avatar,
-  });
-  const cardList = new Section(
-    {
-      items: initialCardsData,
-      renderer: (item) => {
-        const cardElement = createCard(item, userData._id);
-        cardList.addItem(cardElement);
-      },
-    },
-    cardSectionSelector
-  );
-
-  cardList.renderItems();
-  userId = userData._id;
-
-  const handleAddCardFormSubmit = (data) => {
-    console.log(data);
-    api.addNewCard({ name: data.title, link: data.link }).then((cardData) => {
-      console.log(cardData);
-      console.log(userId);
-      const newCard = createCard(cardData, userId);
-      cardList.addItem(newCard);
+api
+  .getInitialData()
+  .then(([userData, initialCardsData]) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      job: userData.about,
+      avatar: userData.avatar,
     });
-  };
+    const cardList = new Section(
+      {
+        items: initialCardsData,
+        renderer: (item) => {
+          const cardElement = createCard(item, userData._id);
+          cardList.addItem(cardElement);
+        },
+      },
+      cardSectionSelector
+    );
 
-  const popupAddCard = new PopupWithForm(
-    popupSelectors.popupAddCard,
-    {
-      submitButtonLabel: popupFormCreateButtonLabels.submitButtonLabel,
-      submitButtonAltLabel: popupFormCreateButtonLabels.submitButtonAltLabel,
-    },
-    handleAddCardFormSubmit
-  );
+    cardList.renderItems();
+    userId = userData._id;
 
-  const handleAddCardFormOpen = () => {
-    formAddCard.reset();
-    formValidators[formAddCard.getAttribute("name")].resetInputValidation();
-    popupAddCard.open();
-  };
+    const handleAddCardFormSubmit = (data, addCardForm) => {
+      addCardForm.showLoading();
+      api
+        .addNewCard({ name: data.title, link: data.link })
+        .then((cardData) => {
+          const newCard = createCard(cardData, userId);
+          cardList.addItem(newCard);
+        })
+        .catch((err) => {
+          console.log(`Error:     ${err}`);
+        })
+        .finally(() => {
+          addCardForm.hideLoading();
+        });
+      addCardForm.close();
+    };
 
-  popupAddCard.setEventListeners();
+    const popupAddCard = new PopupWithForm(
+      popupSelectors.popupAddCard,
+      {
+        submitButtonLabel: popupFormCreateButtonLabels.submitButtonLabel,
+        submitButtonAltLabel: popupFormCreateButtonLabels.submitButtonAltLabel,
+      },
+      handleAddCardFormSubmit
+    );
 
-  profileAddBtn.addEventListener("click", handleAddCardFormOpen);
-});
+    const handleAddCardFormOpen = () => {
+      formAddCard.reset();
+      formValidators[formAddCard.getAttribute("name")].resetInputValidation();
+      popupAddCard.open();
+    };
+
+    popupAddCard.setEventListeners();
+
+    profileAddBtn.addEventListener("click", handleAddCardFormOpen);
+  })
+  .catch((err) => console.log(`Error:     ${err}`));
 
 popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();

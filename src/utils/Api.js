@@ -28,28 +28,19 @@ class Api {
         name: name,
         link: link,
       }),
-    })
-      .then((res) => {
-        return res.ok
-          ? res.json()
-          : Promise.reject(`${res.status} ${res.statusText}`);
-      })
-      .catch((err) => {
-        return Promise.reject(err);
-      });
+    }).then((res) => {
+      return res.ok
+        ? res.json()
+        : Promise.reject(`${res.status} ${res.statusText}`);
+    });
   }
 
   getUserData() {
     return fetch(`${this._mainUrl}/users/me`, {
       headers: this._headers,
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-      )
-
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
+    );
   }
 
   removeLike(cardId) {
@@ -78,15 +69,11 @@ class Api {
         name: name,
         about: about,
       }),
-    })
-      .then((res) => {
-        return res.ok
-          ? res.json()
-          : Promise.reject(`${res.status} ${res.statusText}`);
-      })
-      .catch((err) => {
-        return Promise.reject(err);
-      });
+    }).then((res) => {
+      return res.ok
+        ? res.json()
+        : Promise.reject(`${res.status} ${res.statusText}`);
+    });
   }
 
   setUserAvatar(avatarLink) {
@@ -94,11 +81,9 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: avatarLink }),
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-      )
-      .catch((err) => console.log(err));
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
+    );
   }
 
   removeCard(cardId) {
@@ -111,13 +96,10 @@ class Api {
   }
 
   getInitialCardsData() {
-    return fetch(`${this._mainUrl}/cards`, { headers: this._headers })
-      .then((res) =>
+    return fetch(`${this._mainUrl}/cards`, { headers: this._headers }).then(
+      (res) =>
         res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+    );
   }
 
   getInitialData() {

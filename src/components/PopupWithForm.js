@@ -33,19 +33,24 @@ class PopupWithForm extends Popup {
   setEventListeners() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._buttonSubmit.textContent = this._buttonSubmitAltLabel;
       this._buttonSubmit.disabled = true;
-      this._handleFormSubmit(this._getInputValues());
-      this.close();
+      this._handleFormSubmit(this._getInputValues(), this);
     });
 
     super.setEventListeners();
   }
 
+  showLoading() {
+    this._buttonSubmit.textContent = this._buttonSubmitAltLabel;
+  }
+
+  hideLoading() {
+    this._buttonSubmit.textContent = this._buttonSubmitLabel;
+  }
+
   close() {
     super.close();
     this._form.reset();
-    this._buttonSubmit.textContent = this._buttonSubmitLabel;
   }
 }
 
