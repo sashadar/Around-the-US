@@ -102,18 +102,14 @@ const createCard = (cardData, userId) => {
           api
             .removeLike(id)
             .then((cardData) => {
-              newCardObject.setLikeIconInactive();
-              newCardObject.updatelikes(cardData.likes);
-              newCardObject.updateLikesCount(cardData.likes.length);
+              newCardObject.updateLikes(cardData.likes);
             })
             .catch((err) => console.log(err));
         } else {
           api
             .addLike(id)
             .then((cardData) => {
-              newCardObject.setLikeIconActive();
-              newCardObject.updatelikes(cardData.likes);
-              newCardObject.updateLikesCount(cardData.likes.length);
+              newCardObject.updateLikes(cardData.likes);
             })
             .catch((err) => console.log(err));
         }
