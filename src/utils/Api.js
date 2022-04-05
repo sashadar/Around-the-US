@@ -1,8 +1,7 @@
-const _processResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Something went wrong: ${res.status}`);
+const processResponse = (res) => {
+  return res.ok
+    ? res.json()
+    : Promise.reject(`${res.status} ${res.statusText}`);
 };
 
 class Api {
@@ -28,37 +27,27 @@ class Api {
         name: name,
         link: link,
       }),
-    }).then((res) => {
-      return res.ok
-        ? res.json()
-        : Promise.reject(`${res.status} ${res.statusText}`);
-    });
+    }).then(processResponse);
   }
 
   getUserData() {
     return fetch(`${this._mainUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-    );
+    }).then(processResponse);
   }
 
   removeLike(cardId) {
     return fetch(`${this._mainUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-    );
+    }).then(processResponse);
   }
 
   addLike(cardId) {
     return fetch(`${this._mainUrl}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-    );
+    }).then(processResponse);
   }
 
   setUserData({ name, about }) {
@@ -69,11 +58,7 @@ class Api {
         name: name,
         about: about,
       }),
-    }).then((res) => {
-      return res.ok
-        ? res.json()
-        : Promise.reject(`${res.status} ${res.statusText}`);
-    });
+    }).then(processResponse);
   }
 
   setUserAvatar(avatarLink) {
@@ -81,24 +66,19 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: avatarLink }),
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-    );
+    }).then(processResponse);
   }
 
   removeCard(cardId) {
     return fetch(`${this._mainUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
-    );
+    }).then(processResponse);
   }
 
   getInitialCardsData() {
     return fetch(`${this._mainUrl}/cards`, { headers: this._headers }).then(
-      (res) =>
-        res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`)
+      processResponse
     );
   }
 
