@@ -66,14 +66,6 @@ class Card {
     this._likeCounter.textContent = count;
   }
 
-  /* checkIfLiked() {
-    if (this._likes.some((entry) => entry._id === this._userId)) {
-      this.elementButtonLike.classList.add(
-        "element__button_action_like_active"
-      );
-    }
-  } */
-
   _isLiked = () => this._likes.some((entry) => entry._id === this._userId);
 
   _renderLikes() {
