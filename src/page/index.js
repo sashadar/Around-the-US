@@ -136,10 +136,10 @@ const handleEditProfileFormSubmit = (formInputValues, editProfileForm) => {
         job: userDataResponse.about,
         avatar: userDataResponse.avatar,
       });
+      editProfileForm.close();
     })
     .catch((err) => console.log(`Error:     ${err}`))
     .finally(() => {
-      editProfileForm.close();
       editProfileForm.hideLoading();
     });
 };
@@ -154,10 +154,10 @@ const handleEditAvatarFormSubmit = (formInputValues, editAvatarForm) => {
         job: userDataResponse.about,
         avatar: userDataResponse.avatar,
       });
+      editAvatarForm.close();
     })
     .catch((err) => console.log(`Error:     ${err}`))
     .finally(() => {
-      editAvatarForm.close();
       editAvatarForm.hideLoading();
     });
 };
@@ -180,10 +180,14 @@ const popupEditAvatar = new PopupWithForm(
   handleEditAvatarFormSubmit
 );
 
-const handleEditProfileOpen = () => {
+const fillProfileForm = () => {
   const info = userInfo.getUserInfo();
   formEditProfileInputName.value = info.name;
   formEditProfileInputJob.value = info.job;
+};
+
+const handleEditProfileOpen = () => {
+  fillProfileForm();
   formValidators[formEditProfile.getAttribute("name")].resetInputValidation();
   popupEditProfile.open();
 };
@@ -223,6 +227,7 @@ api
         .then((cardData) => {
           const newCard = createCard(cardData, userId);
           cardList.addItem(newCard);
+          addCardForm.close();
         })
         .catch((err) => {
           console.log(`Error:     ${err}`);
@@ -230,7 +235,6 @@ api
         .finally(() => {
           addCardForm.hideLoading();
         });
-      addCardForm.close();
     };
 
     const popupAddCard = new PopupWithForm(
