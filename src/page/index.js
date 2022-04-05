@@ -93,7 +93,6 @@ const createCard = (cardData, userId) => {
             })
             .catch((err) => console.log(`Error:     ${err}`))
             .finally(() => popupConfirm.hideLoading());
-          popupConfirm.close();
         });
       },
       handleLikeClick: (id) => {
