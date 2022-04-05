@@ -25,7 +25,7 @@ import {
 } from "../utils/constants.js";
 
 import "./index.css";
-g;
+
 let userId = "";
 const api = new Api({
   serverUrl: apiSettings.serverUrl,
