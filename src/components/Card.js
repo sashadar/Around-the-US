@@ -108,7 +108,8 @@ class Card {
     this._setEventListeners();
     this._renderLikes();
     this._elementImage.src = this._imageUrl;
-    this._elementTitle.textContent = this._elementImage.alt = this._imageTitle;
+    this._elementTitle.textContent = this._imageTitle;
+    this._elementImage.alt = this._imageTitle;
     return this._element;
   }
 
