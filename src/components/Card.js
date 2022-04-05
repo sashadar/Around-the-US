@@ -107,10 +107,8 @@ class Card {
     this._hideDeleteButton();
     this._setEventListeners();
     this._renderLikes();
-    /*   this.checkIfLiked(); */
     this._elementImage.src = this._imageUrl;
     this._elementTitle.textContent = this._elementImage.alt = this._imageTitle;
-    /*    this.updateLikesCount(this._likes.length); */
     return this._element;
   }
 
