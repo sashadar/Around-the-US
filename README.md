@@ -1,5 +1,7 @@
 # Project 4: Around The U.S.
 
+## [Link to GitHub Pages][gitpages]
+
 ### Overview
 
 - Intro
@@ -24,8 +26,8 @@ The project design and all needed data were provided by Figma tool.
 
 **Features**
 
-- Responsive design - a page looks great across different resolutions
-- Smooth transitions for beter user experience
+- Responsive design.
+- Smooth transitions for beter user experience.
 - Input validation in "Edit profile" and "New place" forms enabled.
 - Image enlargement and preview mode available.
 
@@ -49,4 +51,4 @@ The project is far away from being finished and few improvements are planned in 
 [figma1]: https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1
 [figma2]: https://www.figma.com/file/m79HxYeZpOXRw0Tz2eZGOV/Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=1%3A2
 [figma3]: https://www.figma.com/file/sybbAgQkPobLG3wFzcrGVr/Sprint-6_-Around-The-U.S.?node-id=0%3A73
-[gitpages]: https://sashadar.github.io/web_project_4/
+[gitpages]: https://sashadar.github.io/Around-the-US/
